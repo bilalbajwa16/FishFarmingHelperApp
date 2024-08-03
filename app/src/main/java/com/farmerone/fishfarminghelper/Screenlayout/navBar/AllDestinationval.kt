@@ -14,10 +14,7 @@ object AllDestinations {
 
 class AppNavigationActions(private val navController: NavHostController) {
 
-    fun navigateToAbout() {
-        navController.navigate(ABOUT) {
-            popUpTo(ABOUT)
-        }}
+
 
     fun navigateToHomes() {
         navController.navigate(HOME_VAL) {

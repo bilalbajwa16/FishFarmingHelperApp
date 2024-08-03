@@ -7,12 +7,13 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="lightblue">#bac9ed</color>
-    <color name="colorcard">#edf3ff</color>
-    <color name="toolbarcolor">#042a6b</color>
+    <color name="lightblue">#000000</color>
+    <color name="colorcard">#000000</color>
+    <color name="toolbarcolor">#000000</color>
     <color name="text_color_item">#5974a1</color>
-    <color name="text_colores">#000000</color>
-    <color name="cardcolor">#ffffff</color>
-    <color name="backgrey">#e0e0e0</color>
-    <color name="textblue">#042a6b</color>
+    <color name="text_colores">#ffffff</color>
+    <color name="cardcolor">#000000</color>
+    <color name="backgrey">#000000</color>
+    <color name="textblue">#ffffff</color>
+
 </resources>

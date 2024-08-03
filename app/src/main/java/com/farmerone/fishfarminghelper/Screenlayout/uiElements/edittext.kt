@@ -29,7 +29,7 @@ import com.farmerone.fishfarminghelper.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-    fun textfield(title:String):String {
+    fun textfield(title:String): String {
     val updatevalue = title.replace(":", "")
 
     var values by remember { mutableStateOf("") }
@@ -59,7 +59,7 @@ import com.farmerone.fishfarminghelper.R
                 onValueChange = {
                         values= it
                 },
-                label = { Text("Enter Weight") },
+                label = { Text(title) },
 
 
                 textStyle = TextStyle( fontSize =12.sp, color = colorResource(id = R.color.text_colores), fontWeight = FontWeight.Normal ),

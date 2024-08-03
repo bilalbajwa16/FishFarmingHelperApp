@@ -17,12 +17,13 @@ import com.farmerone.fishfarminghelper.Screenlayout.uiElements.image
 import com.farmerone.fishfarminghelper.Screenlayout.uiElements.textfield
 import com.farmerone.fishfarminghelper.Screenlayout.uiElements.toolbar
 import com.farmerone.fishfarminghelper.Utils.fishparameters
+import com.farmerone.fishfarminghelper.Utils.waterQualityModel
 import com.google.gson.Gson
 
 
 
 @Composable
-fun header_top(navController: NavHostController,imgid:Int,title:String) {
+fun waterfun(navController: NavHostController,imgid:Int,title:String) {
     val context = (LocalContext.current as? Activity)
 
     Column(     Modifier
@@ -34,7 +35,7 @@ fun header_top(navController: NavHostController,imgid:Int,title:String) {
         image(imgid)
 
 
-        layout(navController)
+        waterlayout(navController)
 
 
 
@@ -43,33 +44,29 @@ fun header_top(navController: NavHostController,imgid:Int,title:String) {
 }
 
 @Composable
-fun layout(navController: NavHostController) {
+fun waterlayout(navController: NavHostController) {
     Column(Modifier.fillMaxSize()) {
 
 
-            headings(title = "Select fish age")
+            headings(title = "Dissolved Oxygen ")
 
-            var age=FishAgeToggle()
+         var dolevel= textfield(title = "Enter DO")
 
-            headings(title = "Average Weight")
+            headings(title = "PH level")
 
-           var avgwght= textfield(title = "Enter Weight")
+        var phlevel= textfield(title = "Enter PH")
 
-
-           headings(title = "No. of fishes")
-
-          var  nofishes= textfield(title = "Enter Number")
 
            Buttones(){
-               if(age.isNotEmpty()&&nofishes.isNotEmpty()&&avgwght.isNotEmpty()){
-             val ob=    fishparameters(nofishes.toDouble(),avgwght.toDouble(),age.toString())
+               if(dolevel.isNotEmpty()&&phlevel.isNotEmpty()){
+               val ob= waterQualityModel(dolevel.toDouble(),phlevel.toDouble())
                val convertJsonString = Gson().toJson(ob)
 
 
-//               navController.navigate("Report")
+  //             navController.navigate("Report")
+//
 
-
-                   navController.navigate("report/$convertJsonString")
+                   navController.navigate("reportwater/$convertJsonString")
                }
             //   report(navController = navController,nofishes,avgwgt)
            }

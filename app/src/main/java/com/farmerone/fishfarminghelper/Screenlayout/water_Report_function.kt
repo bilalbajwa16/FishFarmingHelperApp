@@ -14,27 +14,32 @@ import com.farmerone.fishfarminghelper.Screenlayout.uiElements.Buttones
 import com.farmerone.fishfarminghelper.Screenlayout.uiElements.FishAgeToggle
 import com.farmerone.fishfarminghelper.Screenlayout.uiElements.headings
 import com.farmerone.fishfarminghelper.Screenlayout.uiElements.image
+import com.farmerone.fishfarminghelper.Screenlayout.uiElements.textes
 import com.farmerone.fishfarminghelper.Screenlayout.uiElements.textfield
 import com.farmerone.fishfarminghelper.Screenlayout.uiElements.toolbar
 import com.farmerone.fishfarminghelper.Utils.fishparameters
+import com.farmerone.fishfarminghelper.Utils.waterQualityModel
+import com.farmerone.fishfarminghelper.getbiomass
+import com.farmerone.fishfarminghelper.getfeedperday
+import com.farmerone.fishfarminghelper.waterquality
 import com.google.gson.Gson
 
 
-
 @Composable
-fun header_top(navController: NavHostController,imgid:Int,title:String) {
+fun reportwater(navController: NavHostController, nofishes: String) {
     val context = (LocalContext.current as? Activity)
+    val userObject = Gson().fromJson(nofishes,waterQualityModel::class.java)
+    Column(
+        Modifier
 
-    Column(     Modifier
-        .fillMaxSize()
-        .verticalScroll(rememberScrollState()) )
-
+            .verticalScroll(rememberScrollState()))
     {
-        toolbar(title_value = title, contextval = context)
-        image(imgid)
+        toolbar(title_value = "Water Quality", contextval = context)
+        image(R.drawable.waterquality)
 
-
-        layout(navController)
+        waterreport( navController,  userObject)
+    //    if(flag)
+       // layout(navController)
 
 
 
@@ -43,34 +48,19 @@ fun header_top(navController: NavHostController,imgid:Int,title:String) {
 }
 
 @Composable
-fun layout(navController: NavHostController) {
+fun waterreport(navController: NavHostController, fishparameter:waterQualityModel) {
     Column(Modifier.fillMaxSize()) {
 
 
-            headings(title = "Select fish age")
+        headings(title = "Water Quality")
 
-            var age=FishAgeToggle()
-
-            headings(title = "Average Weight")
-
-           var avgwght= textfield(title = "Enter Weight")
+        textes(title = waterquality(fishparameter) )
 
 
-           headings(title = "No. of fishes")
-
-          var  nofishes= textfield(title = "Enter Number")
-
-           Buttones(){
-               if(age.isNotEmpty()&&nofishes.isNotEmpty()&&avgwght.isNotEmpty()){
-             val ob=    fishparameters(nofishes.toDouble(),avgwght.toDouble(),age.toString())
-               val convertJsonString = Gson().toJson(ob)
 
 
-//               navController.navigate("Report")
-
-
-                   navController.navigate("report/$convertJsonString")
-               }
-            //   report(navController = navController,nofishes,avgwgt)
-           }
     }}
+
+
+
+

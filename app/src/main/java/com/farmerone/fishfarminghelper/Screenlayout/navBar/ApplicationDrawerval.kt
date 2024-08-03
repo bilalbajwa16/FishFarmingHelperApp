@@ -25,7 +25,6 @@ import com.farmerone.fishfarminghelper.R
 fun ApplicationDrawer(
     route: String,
     modifier: Modifier = Modifier,
-    navigateToAbout: () -> Unit = {},
     navigateToHomes: () -> Unit = {},
     navigateToPrivacyPolice: () -> Unit = {},
     closeDrawer: () -> Unit = {}
@@ -63,20 +62,7 @@ fun ApplicationDrawer(
             shape = MaterialTheme.shapes.small
         )
 
-        NavigationDrawerItem(
-            label = {
-                Text(text ="About",//
-                    color = colorResource(id = R.color.text_colores),
-                )
-            },
-            selected = route == AllDestinations.ABOUT,
-            onClick = {
-                navigateToAbout()
-                closeDrawer()
-            },
-            icon = { Icon(imageVector = Icons.Filled.Info, contentDescription = " privacy policy icon") },
-            shape = MaterialTheme.shapes.small
-        )
+
 
 
     }
@@ -95,7 +81,7 @@ fun DrawerHeader(modifier: Modifier) {
     ) {
 
         Image(
-            painter = painterResource(id = R.drawable.ic_launcher_foreground),
+            painter = painterResource(id = R.drawable.fish_farm_helper),
             contentDescription = null,
             contentScale = ContentScale.Crop,
             modifier = modifier

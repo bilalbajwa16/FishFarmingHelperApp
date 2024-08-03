@@ -18,6 +18,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.farmerone.fishfarminghelper.R
 import com.farmerone.fishfarminghelper.Screenlayout.Menufunction
+import com.farmerone.fishfarminghelper.Screenlayout.PrivacyPolicyss
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
@@ -40,7 +41,6 @@ fun AppNavGraph(
         drawerContent = {
         ApplicationDrawer(
             route = currentRoute,
-            navigateToAbout = {navigationAction.navigateToAbout()},
             navigateToHomes = { navigationAction.navigateToHomes() },
             navigateToPrivacyPolice = { navigationAction.navigateToPrivacyPolice() },
             closeDrawer = { coroutineScopevar.launch { drawerState.close() } },
@@ -77,7 +77,7 @@ fun AppNavGraph(
                 }
 
                 composable(AllDestinations.PRIVACY_POLICY) {
-                  //  PrivacyApp()
+                  PrivacyPolicyss()
                 }
 
 

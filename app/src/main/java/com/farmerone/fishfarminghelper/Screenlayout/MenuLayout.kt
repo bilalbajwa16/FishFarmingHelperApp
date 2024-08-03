@@ -122,7 +122,7 @@ fun card_item(valuetitle:String, imagevalue: Int,context: Context){
                     Text(text = valuetitle,
                         fontWeight = FontWeight.Normal,
                         fontSize = 12.sp,
-                        color = colorResource(id = R.color.toolbarcolor),
+                        color = colorResource(id = R.color.textblue),
                         textAlign = TextAlign.Center,
                         modifier = Modifier
                             .padding(5.dp, 0.dp, 0.dp, 15.dp)

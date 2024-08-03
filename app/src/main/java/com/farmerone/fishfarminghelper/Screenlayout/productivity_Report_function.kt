@@ -14,27 +14,35 @@ import com.farmerone.fishfarminghelper.Screenlayout.uiElements.Buttones
 import com.farmerone.fishfarminghelper.Screenlayout.uiElements.FishAgeToggle
 import com.farmerone.fishfarminghelper.Screenlayout.uiElements.headings
 import com.farmerone.fishfarminghelper.Screenlayout.uiElements.image
+import com.farmerone.fishfarminghelper.Screenlayout.uiElements.textes
 import com.farmerone.fishfarminghelper.Screenlayout.uiElements.textfield
 import com.farmerone.fishfarminghelper.Screenlayout.uiElements.toolbar
 import com.farmerone.fishfarminghelper.Utils.fishparameters
+import com.farmerone.fishfarminghelper.Utils.fishproductivity
+import com.farmerone.fishfarminghelper.Utils.waterQualityModel
+import com.farmerone.fishfarminghelper.getbiomass
+import com.farmerone.fishfarminghelper.getfeedperday
+import com.farmerone.fishfarminghelper.productioncost
+import com.farmerone.fishfarminghelper.productivity
+import com.farmerone.fishfarminghelper.waterquality
 import com.google.gson.Gson
 
 
-
 @Composable
-fun header_top(navController: NavHostController,imgid:Int,title:String) {
+fun reportproductivity(navController: NavHostController, nofishes: String) {
     val context = (LocalContext.current as? Activity)
+    val userObject = Gson().fromJson(nofishes,fishproductivity::class.java)
+    Column(
+        Modifier
 
-    Column(     Modifier
-        .fillMaxSize()
-        .verticalScroll(rememberScrollState()) )
-
+            .verticalScroll(rememberScrollState()))
     {
-        toolbar(title_value = title, contextval = context)
-        image(imgid)
+        toolbar(title_value = "Productivity Calculator", contextval = context)
+        image(R.drawable.productivity)
 
-
-        layout(navController)
+        productivityreport( navController,  userObject)
+    //    if(flag)
+       // layout(navController)
 
 
 
@@ -43,34 +51,19 @@ fun header_top(navController: NavHostController,imgid:Int,title:String) {
 }
 
 @Composable
-fun layout(navController: NavHostController) {
+fun productivityreport(navController: NavHostController, fishparameter:fishproductivity) {
     Column(Modifier.fillMaxSize()) {
 
 
-            headings(title = "Select fish age")
+        headings(title = "Productivity")
 
-            var age=FishAgeToggle()
-
-            headings(title = "Average Weight")
-
-           var avgwght= textfield(title = "Enter Weight")
+        textes(title =  productivity(fishparameter) )
 
 
-           headings(title = "No. of fishes")
-
-          var  nofishes= textfield(title = "Enter Number")
-
-           Buttones(){
-               if(age.isNotEmpty()&&nofishes.isNotEmpty()&&avgwght.isNotEmpty()){
-             val ob=    fishparameters(nofishes.toDouble(),avgwght.toDouble(),age.toString())
-               val convertJsonString = Gson().toJson(ob)
 
 
-//               navController.navigate("Report")
-
-
-                   navController.navigate("report/$convertJsonString")
-               }
-            //   report(navController = navController,nofishes,avgwgt)
-           }
     }}
+
+
+
+

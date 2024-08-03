@@ -30,7 +30,7 @@ fun toolbar(title_value:String, contextval: Activity?){
 
             }) {
                 Icon(
-                    tint = Color.Black,
+                    tint = colorResource(id = R.color.text_colores),
                     imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                     contentDescription = "Localized description"
                 )

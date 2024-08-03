@@ -22,7 +22,7 @@ import com.farmerone.fishfarminghelper.R
 
 
 @Composable
-fun FishAgeToggle() {
+fun FishAgeToggle():String{
     val options = listOf(
         "0-1",
         "1-3",
@@ -80,4 +80,6 @@ fun FishAgeToggle() {
             }
         }
     }
-}}
+}
+return selectedOption.toString()
+}
